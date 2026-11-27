@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Nextwatch mockup</title>
+<style>
+:root{--bg:#12131a;--panel:#1a1c26;--card:#232634;--fg:#eceef6;--muted:#9aa0b6;--line:#2d3142;--accent:#8f9bff;--hot:#ff9d6c;--display:"Avenir Next","Helvetica Neue",system-ui,sans-serif;--mono:ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 -apple-system,"Helvetica Neue",system-ui,sans-serif;width:1280px}
+.app{display:grid;grid-template-columns:210px 1fr;min-height:820px}
+.side{background:var(--panel);border-right:1px solid var(--line);padding:20px 12px;display:flex;flex-direction:column;gap:4px}
+.brand{font-family:var(--display);font-weight:700;font-size:21px;padding:0 10px 16px;letter-spacing:-.01em}
+.brand em{font-style:normal;color:var(--hot)}
+.nav{display:flex;justify-content:space-between;padding:8px 10px;border-radius:8px;color:var(--muted)}
+.nav.on{background:var(--card);color:var(--fg)}
+.nav small{font-family:var(--mono);font-size:11px}
+hr{border:0;border-top:1px solid var(--line);margin:12px 4px}
+.sync{margin-top:auto;font-family:var(--mono);font-size:11px;color:var(--muted);padding:0 10px;line-height:1.7}
+.main{padding:24px 28px;display:flex;flex-direction:column;gap:26px;min-width:0}
+.top{display:flex;gap:12px}
+.search{flex:1;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;color:var(--muted)}
+.seg{display:flex;background:var(--card);border-radius:10px;padding:3px;border:1px solid var(--line)}
+.seg span{padding:6px 14px;border-radius:8px;color:var(--muted);font-size:13px}.seg .on{background:#343850;color:var(--fg)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;background:linear-gradient(120deg,#2a2440,#1b2236 60%,#1a1c26);border-radius:14px;padding:24px;border:1px solid var(--line)}
+.poster{border-radius:8px;position:relative;display:flex;align-items:flex-end;padding:10px;font-family:var(--display);font-weight:700;font-size:15px;line-height:1.1;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.hero .poster{aspect-ratio:16/9;border-radius:10px;font-size:26px;padding:16px}
+.meta{font-family:var(--mono);font-size:12px;color:var(--muted)}
+h3{font-family:var(--display);font-size:28px;margin:4px 0 0}
+.why{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.why div{font-size:13px;color:#cfd3e6;display:flex;gap:8px;align-items:baseline}
+.why div:before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--hot)}
+.actions{display:flex;gap:8px;margin-top:16px}
+.btn{font-size:13px;font-weight:600;border-radius:8px;padding:8px 14px;border:1px solid var(--line);background:var(--card)}
+.btn.p{background:var(--accent);border-color:var(--accent);color:#10122a}
+.rowhead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.rowhead b{font-family:var(--display);font-size:17px}.rowhead span{font-size:12px;color:var(--muted)}
+.strip{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+.card .poster{aspect-ratio:2/3}
+.cap{font-size:12px;color:var(--muted);line-height:1.35;margin-top:6px}.cap b{display:block;color:var(--fg);font-weight:500;font-size:13px}
+.badge{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:5px;background:rgba(10,12,20,.72);color:#fff;text-shadow:none}
+.badge.lib{background:#1f7a52}.badge.dl{background:#8a5a12}
+.match{position:absolute;top:8px;right:8px;font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:5px;background:rgba(255,255,255,.9);color:#141625;text-shadow:none}
+</style></head><body>
+<div class="app">
+<div class="side">
+<div class="brand">next<em>watch</em></div>
+<div class="nav on">For you <small>48</small></div>
+<div class="nav">In your library <small>112</small></div>
+<div class="nav">Next seasons <small>6</small></div>
+<div class="nav">Complete the set <small>9</small></div>
+<div class="nav">Watchlist <small>14</small></div>
+<hr>
+<div class="nav">Taste profile</div>
+<div class="nav">Hidden / not for me</div>
+<div class="nav">Settings</div>
+<div class="sync">Plex synced 06:00<br>Radarr 412 · Sonarr 58<br>2 downloads active</div>
+</div>
+<div class="main">
+<div class="top"><div class="search">Search titles, people, keywords</div><div class="seg"><span class="on">All</span><span>Movies</span><span>TV</span></div></div>
+<div class="hero">
+<div class="poster" style="background:linear-gradient(160deg,#3c5a7a,#1d2a3d 55%,#0f1522)"><span class="badge">TOP PICK</span><span class="match">94%</span>Arrival</div>
+<div>
+<div class="meta">MOVIE · 2016 · 1h 56m · Denis Villeneuve</div><h3>Arrival</h3>
+<div class="why"><div>You finished Dune: Part Two and Blade Runner 2049, both by Villeneuve</div><div>Matches your top themes: first contact, linguistics, quiet sci-fi</div><div>Not in your library yet</div></div>
+<div class="actions"><span class="btn p">Add to Radarr</span><span class="btn">Watchlist</span><span class="btn">Seen it</span><span class="btn">Not for me</span></div>
+</div></div>
+<div><div class="rowhead"><b>Because you finished Severance</b><span>similar titles + your keywords</span></div>
+<div class="strip">
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#6b4a3a,#2a1d18)"><span class="match">92%</span>Dark</div><div class="cap"><b>Dark</b>TV · 2017</div></div>
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#3b4f55,#141c1f)"><span class="badge lib">IN LIBRARY</span><span class="match">90%</span>Silo</div><div class="cap"><b>Silo</b>TV · 2023</div></div>
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#5a2630,#160b0f)"><span class="match">87%</span>Mr. Robot</div><div class="cap"><b>Mr. Robot</b>TV · 2015</div></div>
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#2f3542,#0d0f14)"><span class="match">85%</span>Black Mirror</div><div class="cap"><b>Black Mirror</b>TV · 2011</div></div>
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#5c5030,#191509)"><span class="badge dl">SAB 64%</span><span class="match">84%</span>Devs</div><div class="cap"><b>Devs</b>TV · 2020</div></div>
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#3d3a5e,#13121f)"><span class="match">80%</span>The OA</div><div class="cap"><b>The OA</b>TV · 2016</div></div>
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#4d5240,#121410)"><span class="match">78%</span>Undone</div><div class="cap"><b>Undone</b>TV · 2019</div></div>
+</div></div>
+<div><div class="rowhead"><b>In your library, never watched</b><span>sorted by match</span></div>
+<div class="strip">
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#7a5a32,#1f160b)"><span class="badge lib">IN LIBRARY</span><span class="match">91%</span>Sicario</div><div class="cap"><b>Sicario</b>Movie · 2015</div></div>
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#2d4a66,#0c1520)"><span class="badge lib">IN LIBRARY</span><span class="match">88%</span>Heat</div><div class="cap"><b>Heat</b>Movie · 1995</div></div>
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#4d5240,#121410)"><span class="badge lib">IN LIBRARY</span><span class="match">86%</span>Children of Men</div><div class="cap"><b>Children of Men</b>Movie · 2006</div></div>
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#6a3a2a,#1d0f0a)"><span class="badge lib">IN LIBRARY</span><span class="match">83%</span>The Bear</div><div class="cap"><b>The Bear</b>TV · 2022</div></div>
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#3f6650,#0f1b14)"><span class="badge lib">IN LIBRARY</span><span class="match">82%</span>Annihilation</div><div class="cap"><b>Annihilation</b>Movie · 2018</div></div>
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#56583a,#16170c)"><span class="badge lib">IN LIBRARY</span><span class="match">79%</span>Zodiac</div><div class="cap"><b>Zodiac</b>Movie · 2007</div></div>
+<div class="card"><div class="poster" style="aspect-ratio:2/3;background:linear-gradient(160deg,#3a5d6b,#0e171b)"><span class="badge lib">IN LIBRARY</span><span class="match">76%</span>Insomnia</div><div class="cap"><b>Insomnia</b>Movie · 2002</div></div>
+</div></div>
+</div></div>
+</body></html>

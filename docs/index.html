@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nextwatch</title>
+<meta name="description" content="Self-hosted movie and TV recommendations from your own Plex history and library, with one-click add to Radarr and Sonarr.">
+<style>
+:root{--bg:#0f1016;--panel:#171924;--fg:#eceef6;--muted:#9aa0b6;--line:#2a2d3d;--accent:#8f9bff;--hot:#ff9d6c;--ok:#6fdca5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,"Helvetica Neue",system-ui,sans-serif}
+.w{max-width:1040px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left))}
+h1,h2,h3{font-family:"Avenir Next","Helvetica Neue",system-ui,sans-serif;line-height:1.15;margin:0;text-wrap:balance}
+header{padding:56px 0 32px;display:flex;flex-direction:column;gap:18px}
+.logo{font-weight:700;font-size:20px}.logo em{font-style:normal;color:var(--hot)}
+h1{font-size:clamp(32px,6vw,56px);letter-spacing:-.02em;max-width:18ch}
+.lede{font-size:19px;color:var(--muted);max-width:60ch;margin:0}
+.pill{align-self:flex-start;font:12px ui-monospace,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--hot);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;padding:10px 18px;border-radius:9px;font-weight:600;text-decoration:none;border:1px solid var(--line);color:var(--fg);background:var(--panel)}
+.btn.p{background:var(--accent);border-color:var(--accent);color:#10122a}
+.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 30px 70px -30px #000}
+.shot img{display:block;width:100%;height:auto}
+section{padding:56px 0 0}
+h2{font-size:28px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+.box h3{font-size:17px;margin-bottom:6px}.box p{margin:0;color:var(--muted);font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:12px ui-monospace,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.tw{overflow-x:auto}
+code{font:13px ui-monospace,Menlo,monospace;background:#232634;padding:1px 6px;border-radius:4px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;font:13px/1.6 ui-monospace,Menlo,monospace;color:#cfd3e6}
+footer{padding:64px 0 48px;color:var(--muted);font-size:14px}
+a{color:var(--accent)}
+</style></head><body><div class="w">
+<header>
+<div class="logo">next<em>watch</em></div>
+<span class="pill">In design · not released</span>
+<h1>Know what to watch next, and why.</h1>
+<p class="lede">A small web app for your home server. It learns your taste from your own Plex history, looks through your Radarr and Sonarr library, and suggests what to watch or add, with the reasons shown on every pick.</p>
+<div class="cta"><a class="btn p" href="#how">How it works</a><a class="btn" href="https://github.com/rdaswav/nextwatch">View on GitHub</a></div>
+</header>
+<div class="shot"><img src="mockup.png" alt="Nextwatch home screen with a top pick, reasons, and rows of recommended titles"></div>
+<p style="color:var(--muted);font-size:13px;margin:10px 0 0">Design mockup with example titles. The app is not built yet.</p>
+
+<section><h2>Built for your library, not a generic top 10</h2>
+<div class="grid">
+<div class="box"><h3>Every pick explains itself</h3><p>"You finished Dune: Part Two and Blade Runner 2049." Reasons come from the score itself, so they are never made up.</p></div>
+<div class="box"><h3>Reads your real history</h3><p>Uses Plex play counts, completion, ratings and recency from day one. No scrobbling service and no account elsewhere.</p></div>
+<div class="box"><h3>Knows what you already own</h3><p>Rows for unwatched titles in your library, shows with a next season, and films missing from a collection you started.</p></div>
+<div class="box"><h3>One-click add</h3><p>Add to Radarr or Sonarr with your quality profile and folder, search starts at once, and download progress shows on the card.</p></div>
+<div class="box"><h3>You stay in control</h3><p>Hide a title, mark it seen, or thumbs up. Feedback changes the next scores, and a taste profile page shows what it learned.</p></div>
+<div class="box"><h3>Private and light</h3><p>One container, one SQLite file, no cloud service. Reach it at home or over Tailscale. Runs in under 256 MB of RAM.</p></div>
+</div></section>
+
+<section id="how"><h2>How it works</h2>
+<div class="tw"><table><thead><tr><th>Step</th><th>What happens</th></tr></thead><tbody>
+<tr><td>Sync</td><td>Plex library, watch history and ratings. Radarr and Sonarr libraries and queues. TMDb metadata, keywords, cast and similar titles.</td></tr>
+<tr><td>Profile</td><td>Each watched title gets a weight from completion, rating and recency. Features such as genres, keywords, directors and cast are summed into a taste profile.</td></tr>
+<tr><td>Score</td><td>Candidates from TMDb, plus unwatched titles you own, are scored on taste match, how many of your favourites point to them, quality and freshness, then re-ranked for variety.</td></tr>
+<tr><td>Browse</td><td>Rows such as For you, Because you finished X, In your library, Next seasons, Complete the set and Directors you binge.</td></tr>
+<tr><td>Add</td><td>One click sends the title to Radarr or Sonarr and starts the search through your existing downloader.</td></tr>
+</tbody></table></div></section>
+
+<section><h2>Architecture</h2>
+<pre>browser (home network or Tailscale)
+   |
+nextwatch container :8791   FastAPI + htmx + SQLite
+   |-- Plex        library, history, ratings        (read)
+   |-- Radarr      movies, queue; add + search      (read, write)
+   |-- Sonarr      series, queue; add + search      (read, write)
+   |-- SABnzbd     queue summary                    (read)
+   `-- TMDb        metadata, keywords, similar      (read)</pre>
+<p style="color:var(--muted)">Nextwatch never talks to your indexer or usenet provider. Radarr and Sonarr already own that.</p></section>
+
+<section><h2>How it compares</h2>
+<div class="tw"><table><thead><tr><th>Tool</th><th>Good at</th><th>Gap Nextwatch fills</th></tr></thead><tbody>
+<tr><td>Diskovarr</td><td>Multi-user request portal with recommendations</td><td>Needs Tautulli history to learn; no next-seasons or collection-gap rows</td></tr>
+<tr><td>SuggestArr</td><td>Auto-requests similar titles</td><td>Acts for you rather than letting you browse and choose</td></tr>
+<tr><td>Shortlist, Curatarr</td><td>Per-user rows inside Plex</td><td>No separate browsing page with reasons</td></tr>
+<tr><td>Trakt</td><td>Tracking and scrobbling</td><td>Focus is logging, not library-aware picks</td></tr>
+</tbody></table></div></section>
+
+<section><h2>Status and plan</h2>
+<p style="color:var(--muted);max-width:68ch">Nextwatch is in design. The mockup, architecture and a 25-task build plan are done. The build runs as a loop of small tasks handled by cheaper models, each checked by an automated test gate, with a person needed only at a few checkpoints. Version 1 is single-user, with no AI model. A hook for a Claude Haiku provider is designed in for later.</p></section>
+
+<footer>Nextwatch is a personal project. Not affiliated with Plex, Radarr, Sonarr or TMDb. This product uses the TMDb API but is not endorsed or certified by TMDb.</footer>
+</div></body></html>
